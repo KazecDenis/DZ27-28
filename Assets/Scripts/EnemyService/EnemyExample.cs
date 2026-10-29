@@ -8,6 +8,7 @@ public class EnemyExample : MonoBehaviour
     [SerializeField] private Transform _spawnPointIsDead;
     [SerializeField] private Transform _spawnPointTimeDead;
     [SerializeField] private Transform _spawnPointCountDead;
+    [SerializeField] private Transform _spawnPointMixDead;
     [SerializeField] private float _lifeTimeEnemy = 5f;
     [SerializeField] private int _maxCountEnemy = 2;
     private EnemyDestroyService _destroyService;
@@ -22,6 +23,7 @@ public class EnemyExample : MonoBehaviour
     private void Update()
     {
         _destroyService.Tick();
+        Debug.Log($"Врагов зарегистрировано {_destroyService.Count}");
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
             CreateEnemyIsDead();
@@ -70,7 +72,7 @@ public class EnemyExample : MonoBehaviour
     }
     private void CreateMixEnemy()
     {
-        Enemy enemyMix = CreateEnemy(_enemyIsDeadPrefab, _spawnPointIsDead);
+        Enemy enemyMix = CreateEnemy(_enemyIsDeadPrefab, _spawnPointMixDead);
         _isMixEnemy = enemyMix;
         float destroyTime = Time.time + _lifeTimeEnemy;
         _destroyService.Register(enemyMix, () => enemyMix.IsDead && Time.time >= destroyTime);
