@@ -36,14 +36,8 @@ public class WalletView : MonoBehaviour
             _subscriptions.Add(type, subscription);
         }
     }
-
-            
-
-
-    private void OnCurrencyChanged(CurrencyType type, int amount)
-    {
-        _items[type].SetAmount(amount);
-    }
+    private void OnCurrencyChanged(CurrencyType type, int amount) => _items[type].SetAmount(amount);
+   
 
     private void OnDestroy()
     {
@@ -67,5 +61,9 @@ public class WalletView : MonoBehaviour
         return null;
     }
 }
+
+            
+
+
         
          
