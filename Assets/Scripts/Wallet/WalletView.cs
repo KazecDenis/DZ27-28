@@ -16,6 +16,7 @@ public class WalletView : MonoBehaviour
     [SerializeField] private CurrencyIconData[] _currencyIcons;
     private Wallet _wallet;
     private Dictionary<CurrencyType, CurrencyItemView> _items = new();
+    private Dictionary<CurrencyType, Action<int>> _subscriptions = new();
 
     public void Initialize(Wallet wallet)
     {
@@ -30,9 +31,13 @@ public class WalletView : MonoBehaviour
 
             _items.Add(type, item);
 
-            _wallet.CurrencyChanged += OnCurrencyChanged;
+            Action<int> subscription = amount => OnCurrencyChanged(type, amount);
+            _wallet.GetCurrency(type).Changed += subscription;
+            _subscriptions.Add(type, subscription);
         }
     }
+
+            
 
 
     private void OnCurrencyChanged(CurrencyType type, int amount)
@@ -42,8 +47,13 @@ public class WalletView : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (_wallet != null)
-            _wallet.CurrencyChanged -= OnCurrencyChanged;
+        if (_wallet == null)
+            return;
+
+        foreach(CurrencyType type in Enum.GetValues(typeof(CurrencyType)))
+            _wallet.GetCurrency(type).Changed -= _subscriptions[type];
+        
+        _subscriptions.Clear();
     }
 
     private Sprite GetIcon(CurrencyType type)
@@ -57,3 +67,5 @@ public class WalletView : MonoBehaviour
         return null;
     }
 }
+        
+         
