@@ -2,15 +2,18 @@ using System;
 
 public class Timer
 {
-    public event Action<float> TimeChanged;
     public event Action Completed;
     private float _duration;
-    private float _remainingTime;
+    private ReactiveProperty<float> _remainingTime;
     private TimerState _state;
-
     public float Duration => _duration;
-    public float RemainingTime => _remainingTime;
+    public ReactiveProperty<float> RemainingTime => _remainingTime;
     public TimerState State => _state;
+
+    public Timer()
+    {
+        _remainingTime = new ReactiveProperty<float>(default);
+    }
 
     public void Start(float duration)
     {
@@ -18,10 +21,8 @@ public class Timer
             return;
 
             _duration = duration;
-            _remainingTime = _duration;
+            _remainingTime.Value = _duration;
             _state = TimerState.Running;
-
-            TimeChanged?.Invoke(_remainingTime);
     }
 
     public void Pause()
@@ -45,10 +46,8 @@ public class Timer
         if (_duration <= 0)
             return;
 
-        _remainingTime = _duration;
+        _remainingTime.Value = _duration;
         _state = TimerState.Stopped;
-
-        TimeChanged?.Invoke(_remainingTime);
     }
 
     public void Tick(float deltaTime)
@@ -59,15 +58,13 @@ public class Timer
         if (deltaTime <= 0)
             return;
 
-        _remainingTime -= deltaTime;
+        _remainingTime.Value -= deltaTime;
 
-        if (_remainingTime <= 0)
+        if (_remainingTime.Value <= 0)
         {
-            _remainingTime = 0;
+            _remainingTime.Value = 0;
             _state = TimerState.Completed;
         }
-
-        TimeChanged?.Invoke(_remainingTime);
 
         if (_state == TimerState.Completed)
             Completed?.Invoke();
@@ -78,7 +75,7 @@ public class Timer
         get
         {
             if (_duration > 0)
-                return _remainingTime / _duration;
+                return _remainingTime.Value / _duration;
 
             return 0;
         }

@@ -11,7 +11,7 @@ public class TimerSliderView : MonoBehaviour
     public void Initialize(Timer timer)
     {
         _timer = timer;
-        _timer.TimeChanged += OnTimeChanged;
+        _timer.RemainingTime.Changed += OnTimeChanged;
         UpdateView();
     }
 
@@ -29,6 +29,6 @@ public class TimerSliderView : MonoBehaviour
     private void OnDestroy()
     {
         if (_timer != null)
-            _timer.TimeChanged -= OnTimeChanged;
+            _timer.RemainingTime.Changed -= OnTimeChanged;
     }
 }

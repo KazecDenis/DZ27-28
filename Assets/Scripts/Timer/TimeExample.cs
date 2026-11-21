@@ -11,7 +11,7 @@ public class TimeExample : MonoBehaviour
     {
         _timer = new Timer();
         
-        _timer.TimeChanged += OnTimeChanged;
+        _timer.RemainingTime.Changed += OnTimeChanged;
         _timer.Completed += OnCompleted;
 
         _timerSliderView.Initialize(_timer);
@@ -33,7 +33,7 @@ public class TimeExample : MonoBehaviour
         if (_timer == null)
             return;
 
-        _timer.TimeChanged -= OnTimeChanged;
+        _timer.RemainingTime.Changed -= OnTimeChanged;
         _timer.Completed -= OnCompleted;
     } 
     private void OnTimeChanged(float remainingTime)
@@ -45,8 +45,8 @@ public class TimeExample : MonoBehaviour
     {
         Debug.Log("Таймер завершен!");
     }
-
 }
+
 
 
         

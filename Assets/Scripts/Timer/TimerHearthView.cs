@@ -12,7 +12,7 @@ public class TimerHearthView : MonoBehaviour
     {
         _timer = timer;
 
-        _timer.TimeChanged += OnTimeChanged;
+        _timer.RemainingTime.Changed += OnTimeChanged;
 
         UpdateView();
     }
@@ -29,7 +29,7 @@ public class TimerHearthView : MonoBehaviour
         if (_hearts.Count != requiredCount)
             RebuildHearts(requiredCount);
 
-        int visibleCount = Mathf.CeilToInt(_timer.RemainingTime);
+        int visibleCount = Mathf.CeilToInt(_timer.RemainingTime.Value);
 
         for (int i = 0; i < _hearts.Count; i++)
         {
@@ -59,6 +59,6 @@ public class TimerHearthView : MonoBehaviour
         if (_timer == null)
             return;
 
-        _timer.TimeChanged -= OnTimeChanged;
+        _timer.RemainingTime.Changed -= OnTimeChanged;
     }
 }

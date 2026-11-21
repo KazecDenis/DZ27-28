@@ -274,7 +274,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &118020961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -502,7 +502,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &347453747
 RectTransform:
   m_ObjectHideFlags: 0
@@ -561,6 +561,102 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 347453746}
   m_CullTransparentMesh: 1
+--- !u!1 &361080477
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 361080479}
+  - component: {fileID: 361080478}
+  m_Layer: 0
+  m_Name: EnemyServiceSpawnerExample
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &361080478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361080477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f08b6902b53ba443bb0320c3182adabf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _elfSettings:
+  - Health: 55
+    Mana: 67
+    Agility: 56
+  - Health: 76
+    Mana: 65
+    Agility: 67
+  - Health: 87
+    Mana: 45
+    Agility: 23
+  - Health: 98
+    Mana: 78
+    Agility: 45
+  - Health: 85
+    Mana: 98
+    Agility: 50
+  _orkSettings:
+  - Health: 150
+    Mana: 4
+    Agility: 60
+  - Health: 130
+    Mana: 5
+    Agility: 75
+  - Health: 150
+    Mana: 2
+    Agility: 80
+  - Health: 180
+    Mana: 1
+    Agility: 78
+  - Health: 176
+    Mana: 6
+    Agility: 98
+  - Health: 166
+    Mana: 12
+    Agility: 120
+  _dragonSettings:
+  - Health: 200
+    Mana: 200
+    Agility: 10
+  - Health: 210
+    Mana: 220
+    Agility: 15
+  - Health: 240
+    Mana: 250
+    Agility: 20
+  - Health: 260
+    Mana: 170
+    Agility: 17
+  - Health: 150
+    Mana: 300
+    Agility: 25
+  _spawner: {fileID: 1518601276}
+--- !u!4 &361080479
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361080477}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.127025, y: 2.6417987, z: -0.064131424}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &424356708
 GameObject:
   m_ObjectHideFlags: 0
@@ -746,7 +842,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &450375436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1095,6 +1191,7 @@ GameObject:
   m_Component:
   - component: {fileID: 705507995}
   - component: {fileID: 705507994}
+  - component: {fileID: 705507996}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -1179,6 +1276,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &705507996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705507993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1 &937720967
 GameObject:
   m_ObjectHideFlags: 0
@@ -2183,6 +2303,56 @@ MonoBehaviour:
     Icon: {fileID: 21300000, guid: fb66cf41123331549bd842d5ee702d5f, type: 3}
   - Type: 2
     Icon: {fileID: 935681920, guid: 60ab43b9a7a0146729591ff12831cb50, type: 3}
+--- !u!1 &1518601275
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1518601277}
+  - component: {fileID: 1518601276}
+  m_Layer: 0
+  m_Name: EnemyServiceSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1518601276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518601275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73aabd9aa5dfa42cbafe1a2e43cac01b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _elfPrefab: {fileID: -8037221474571239250, guid: 0d666e0722e284e4a89be3d9de0adc6c, type: 3}
+  _orkPrefab: {fileID: 972477127466214207, guid: eb40d4c527e1b4da0a5477ea539cff8f, type: 3}
+  _dragonPrefab: {fileID: -8470680006690522088, guid: c33ac965934ac4c9cbc88b36663dd691, type: 3}
+  _elfTransform: {fileID: 939919843}
+  _orkTransform: {fileID: 2089553286}
+  _dragonTransform: {fileID: 937720968}
+--- !u!4 &1518601277
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518601275}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.127025, y: 2.6417987, z: -0.064131424}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1638046816
 GameObject:
   m_ObjectHideFlags: 0
@@ -2724,3 +2894,5 @@ SceneRoots:
   - {fileID: 450375437}
   - {fileID: 118020962}
   - {fileID: 1242304016}
+  - {fileID: 361080479}
+  - {fileID: 1518601277}
